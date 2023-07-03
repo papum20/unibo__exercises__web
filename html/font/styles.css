@@ -1,0 +1,28 @@
+html {
+	font-size: 16px;
+}
+
+#yellow {
+	color: yellow;
+	font-size: 1rem;
+}
+#blue {
+	color: blue;
+	font-size: 3rem;
+}
+#magenta {
+	color: magenta;
+	font-size: 4rem;
+}
+#red {
+	color: red;
+	font-size: 4rem;
+}
+#green {
+	color: green;
+	font-size: 2rem;
+}
+#orange {
+	color: orange;
+	font-size: calc(1rem/16);
+}

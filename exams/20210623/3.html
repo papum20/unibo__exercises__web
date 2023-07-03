@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+		<script>
+			const EVENT_FIELDS = [
+				'id',
+				'name',
+				'img',
+				'place',
+				'date',
+				'time',
+			];
+
+			const _EVENTS = [
+				{
+					'id'	: 1,
+					'name'	: 'event1',
+					'img'	: 'img1',
+					'place'	: 'place1',
+					'date'	: 'date1',
+					'time'	: 'time1',
+				},
+				{
+					'id'	: 2,
+					'name'	: 'event2',
+					'img'	: 'img2',
+					'place'	: 'place2',
+					'date'	: 'date2',
+					'time'	: 'time2',
+				},
+				{
+					'id'	: 3,
+					'name'	: 'event3',
+					'img'	: 'img3',
+					'place'	: 'place3',
+					'date'	: 'date3',
+					'time'	: 'time3',
+				},
+			];
+
+			const _GET_EVENTS = (resolve, reject) => {
+				setTimeout(() => {
+					if(true) {
+						resolve(_EVENTS);
+					} else {
+						reject('some error');
+					}
+				}, 500);
+			}
+
+
+			/**
+			 * @param {Object} event 
+			 */
+			const EVENT = (event) => `
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">${event.id}</h5>
+						<ul class="list-group">
+							${
+								Object.entries(event).filter( ([key, val]) => key != 'id')
+									.map( ([key, val]) => `<li class="list-group-item">${val}</li>`)
+									.join('\n')
+							}
+					</div>
+				</div>
+			`
+
+			const init = async function() {
+					const event_container = document.getElementById('events');
+					// events = await fetch('/LoadEvents');
+					new Promise(_GET_EVENTS)
+						.then( data => {
+							console.log(data);
+							data.forEach(element => 
+									event_container.innerHTML += EVENT(element)
+							);
+						})
+						.catch( err => {
+							alert(`Error: ${err}`);
+						});
+			}
+
+
+			window.onload = init; 
+		</script>
+	</head>
+
+	<body>
+		<main>
+
+			<h2>start events</h2>
+			<div id="events" class="d-flex">
+				
+			</div>
+			<h2>end events</h2>
+			
+		</main>
+	</body>
+</html>

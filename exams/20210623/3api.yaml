@@ -1,0 +1,48 @@
+GET /LoadEvents
+RETURN
+[
+	{
+		id: number,
+		name: string,
+		date: Date,
+		hour: string,
+		performers:
+			[
+				name: string,
+				img: png
+			]
+	}
+]
+ERROR
+500 - Internal server error
+{
+	error: "internal server error"
+}
+
+GET /SelectEvent
+IN QUERY
+{
+	id: number
+}
+RETURN
+{
+	id: number,
+	name: string,
+	date: Date,
+	hour: string,
+	performers:
+		[
+			name: string,
+			img: png
+		]
+}
+ERROR
+500 - Internal Server Error
+{
+	error: "Internal Server Error"
+}
+404 - Not Found
+{
+	error: "The requested event does not exist"
+}
+

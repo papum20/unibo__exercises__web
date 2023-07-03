@@ -1,0 +1,149 @@
+paths:
+  /work:
+    get:
+      parameters:
+        author:
+          type: string
+          in: query
+        title:
+          type: string
+          in: query
+        year:
+          type: int
+          in: query
+        publisher:
+          type: string
+          in: query
+      responses:
+        '200':
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Work'
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+
+  /vynil/{id}/:
+    get:
+      parameters:
+        id:
+          in: path
+          type: int
+      responses:
+        '200':
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Vynil'
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+
+  /cart/{id}:
+    get:
+      parameters:
+        id:
+          description: cart id
+          in: path
+          type: int
+      responses:
+        '200':
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cart'
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+          
+    put:
+      parameters:
+        id:
+          in: path
+          type: int
+        vyinil:
+          in: body
+          type:
+            $ref: '#/definitions/Vynil'
+      responses:
+        '200':
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cart'
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+          
+    delete:
+      parameters:
+        id:
+          in: path
+          type: int
+      responses:
+        '200':
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Vynil'
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+
+
+
+
+definitions:
+  Work:
+    properties:
+      id:
+        type: int
+      title:
+        type: string
+      author:
+        type: string
+      genre:
+        type: string
+      year:
+        type: int
+      publisher:
+        type: string
+      country:
+        type: string
+      images:
+        type: array
+        items: image
+      copies:
+        type: int
+
+  Vynil:
+    properties:
+      work:
+        type:
+          $ref: '#/definitions/Work'
+      conditions:
+        type: string
+      price:
+        type: float
+      photos:
+        type: array
+        items: image
+      
+  Cart:
+    properties:
+      id:
+        type: int
+      items:
+        type: array
+        items: Vynil

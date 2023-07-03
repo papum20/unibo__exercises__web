@@ -1,0 +1,37 @@
+html {
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+	width: 100vw; 
+	height: 100vh;
+}
+
+#yellow {
+	background-color: yellow;
+	width: 25vw;
+	height: 25vh;
+}
+#blue {
+	background-color: blue;
+	width: 50vw;
+	height: 50vh;
+}
+#magenta {
+	background-color: magenta;
+	width: calc(50vw+100px);
+	height: calc(50vh+100px);
+}
+#red {
+	background-color: red;
+	width: calc(50vw+15px);
+	height: calc(50vh+15px);
+}
+#green {
+	background-color: green;
+	width: calc(50vw);
+	height: calc(50vh);
+}
+#orange {
+	background-color: orange;
+	width: calc(75vw/2);
+	height: calc(75vh/2);
