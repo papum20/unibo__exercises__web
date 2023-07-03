@@ -11,7 +11,7 @@ const app = {
 	  //use the values from latitude and longitude to fetch the weather
 	  let lat = document.getElementById('latitude').value;
 	  let lon = document.getElementById('longitude').value;
-	  let key = 'd18155931fd4c5f376ce0ab064b92830';
+	  let key = '';
 	  let lang = 'en';
 	  let units = 'metric';
 	  let url = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;

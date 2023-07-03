@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 
-const apiKey = "57155fe55e11b583378e9082e1b6f9db";
+const apiKey = "";
 var isLoading = true;
 
 function Weather(props){

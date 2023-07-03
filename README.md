@@ -12,5 +12,3 @@ including html, css, js, frameworks, apis...
 	-	html+css  
 -	[js](./js/README.md) :  
 	-	js  
--	[zips](./zips/README.md) :  
-	-	some mysterious zips  
