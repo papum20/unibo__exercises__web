@@ -1,0 +1,29 @@
+«Giampiero Mazzi (Frascati, 14 ottobre 1974) è un ex rugbista
+a 15 e allenatore di rugby a 15 italiano, tecnico del Rugby Roma, squadra nella
+quale trascorse l’intera carriera da giocatore nel ruolo di mediano di mischia.».
+
+@prefix foaf
+@prefix my
+
+my: Giampiero_Mazzi:
+	rdf:type foaf:person
+	foaf:name "Giampiero Mazzi"
+	my:birth {
+		rdf:type my:event
+		my:date "14 ottobre 1974"
+		my:place "Frascati"
+	}
+	my:job {
+		rdf:type my:activity
+		my:name "rugby a 15"
+		my:role "mediano di mischia"
+		;
+		rdf:type my:activity
+		my:name "allenatore di rugby a 15"
+		foaf:group my:rugby_roma
+	}
+	my:nationality "italiano"
+
+my:rugby_roma:
+	rdf:type foaf:group
+	foaf:name "Rugby Roma"
