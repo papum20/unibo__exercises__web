@@ -71,30 +71,32 @@ const unpackJSON = function(el) {
 }
 
 
-const fetchCar = function() {
+const fetchCar = async function() {
 	const n = document.getElementById('form-id').value;
 	console.log(`n = ${n}`);
 
 	var car;
-	const response = fetch(`http:///cgi-bin/getRentable.php?id=${n}`, {method:"GET"})
-		.then( data => {
-			console.log(`res: ${data}`);
-			car = data.json();
-			return data.json();
-		})
-		.catch( err => {
-			console.log("Error: ", err);
-
-			try {
-				console.log(`find: ${Object.entries(_CARS).find( ([key,val]) => val.id == n )[0]}`);
-				car = Object.entries(_CARS).find( ([key,val]) => val.id == n )[0];
-			} catch(err2) {
-				console.log("Erro2: ", err2);
-				car = {error:"not found"};
-			}
-		});
-
-	console.log(`diocane: ${car}`);
+	try {
+		const response = await fetch(`http:///cgi-bin/getRentable.php?id=${n}`, {method:"GET"});
+		console.log(`res: ${await response}`);
+		
+		if(response.ok) {
+			car = await response.json();
+		}
+		else {
+			car = Object.entries(_CARS).find( ([key,val]) => val.id == n )[0];
+		}
+		
+		console.log(`find: ${Object.entries(_CARS).find( ([key,val]) => val.id == n )[0]}`);
+		
+	} catch(err) {
+		console.log("Error: ", err);
+		car = Object.entries(_CARS).find( ([key,val]) => val.id == n )[1];
+		console.log(`find: ${Object.entries(_CARS).find( ([key,val]) => val.id == n )[1]}`);
+		
+	}
+	
+	console.log(`return: ${car}`);
 	return car;
 }
 
